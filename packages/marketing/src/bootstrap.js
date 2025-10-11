@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { createMemoryHistory } from 'history';
 
 // Mount function to start up the app
-const mount = (el) => {
+const mount = (el, { onNavigate }) => {
+  const history = createMemoryHistory();
+
+  history.listen(onNavigate);
+
   ReactDOM.render(
-    <App/>,
+    <App history={history} />,
     el
   );
 };
