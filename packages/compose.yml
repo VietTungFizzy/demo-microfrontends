@@ -1,0 +1,35 @@
+version: '3.8' 
+services:
+  auth:
+    image: node:22
+    command: sh -c "npm i && npm run start"
+    ports:
+      - "8082:8082"
+    working_dir: /app
+    volumes:
+      - ./auth:/app
+  container:
+    image: node:22
+    command: sh -c "npm i && npm run start"
+    ports:
+      - "8080:8080"
+    working_dir: /app
+    volumes:
+      - ./container:/app
+  marketing:
+    image: node:22
+    command: sh -c "npm i && npm run start"
+    ports:
+      - "8081:8081"
+    working_dir: /app
+    volumes:
+      - ./marketing:/app
+  dashboard:
+    image: node:22
+    command: sh -c "npm i && npm run start"
+    ports:
+      - "8083:8083"
+    working_dir: /app
+    volumes:
+      - ./dashboard:/app
+
